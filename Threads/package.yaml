@@ -57,6 +57,35 @@ executables:
     dependencies:
     - Threads
 
+  MVar1-exe:
+    main:                Main.hs
+    source-dirs:         app/MVar1
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - Threads
+
+  MVar2-exe:
+    main:                Main.hs
+    source-dirs:         app/MVar2
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - Threads
+
+  MVar3-exe:
+    main:                Main.hs
+    source-dirs:         app/MVar3
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - Threads
 
 tests:
   Threads-test:
