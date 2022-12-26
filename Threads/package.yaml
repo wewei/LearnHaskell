@@ -108,6 +108,16 @@ executables:
     dependencies:
     - Threads
 
+  Chan-exe:
+    main:                Main.hs
+    source-dirs:         app/Chan
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - Threads
+
 tests:
   Threads-test:
     main:                Spec.hs
