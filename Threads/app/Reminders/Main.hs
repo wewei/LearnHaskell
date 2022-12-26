@@ -1,14 +1,15 @@
 module Main (main) where
 
-import Control.Concurrent
-import Text.Printf
-import Control.Monad
+import Control.Monad.Fix ( fix )
+import Control.Concurrent ( threadDelay, forkIO )
+import Text.Printf ( printf )
 
 main :: IO ()
-main =
-    forever $ do
-        s <- getLine
-        forkIO $ setReminder s
+main = fix $ \loop -> do
+    s <- getLine
+    if s == "exit"
+        then return ()
+        else forkIO (setReminder s) >> loop
 
 setReminder :: String -> IO ()
 setReminder s = do
