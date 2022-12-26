@@ -29,7 +29,7 @@ import Control.Concurrent ( forkIO, killThread )
 import Control.Concurrent.Chan ( Chan, writeChan, readChan, dupChan, newChan )
 import Control.Monad.Fix ( fix )
 import Control.Monad ( when )
-import Control.Exception
+import Control.Exception ( SomeException(SomeException), handle )
 
 type Msg = (Int, String)
 
