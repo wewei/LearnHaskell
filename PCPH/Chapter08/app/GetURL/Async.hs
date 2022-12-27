@@ -2,7 +2,9 @@ module Async
     ( Async
     , async
     , waitCatch
-    , wait ) where
+    , wait
+    , waitEither
+    , waitAny ) where
 
 import Control.Exception ( SomeException, try, throwIO )
 import Control.Concurrent (MVar, newEmptyMVar, putMVar, readMVar, forkIO)
@@ -27,3 +29,16 @@ wait a = do
         Left e  -> throwIO e
         Right v -> return v
 
+waitEither :: Async a -> Async b -> IO (Either a b)
+waitEither a b = do
+    m <- newEmptyMVar
+    _ <- forkIO $ do r <- try (fmap Left  (wait a)); putMVar m r
+    _ <- forkIO $ do r <- try (fmap Right (wait b)); putMVar m r
+    wait (Async m)
+
+waitAny :: [Async a] -> IO a
+waitAny as = do
+    m <- newEmptyMVar
+    let forkwait a = forkIO $ do r <- try (wait a); putMVar m r
+    mapM_ forkwait as
+    wait (Async m)
