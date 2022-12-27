@@ -33,11 +33,20 @@ library
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
       base >=4.7 && <5
+    , bytestring
+    , http-conduit
+    , lens
+    , time
+    , wreq
   default-language: Haskell2010
 
 executable GetURL-exe
   main-is: Main.hs
   other-modules:
+      Async
+      GetURL
+      GetURLWreq
+      TimeIt
       Paths_Chapter08
   hs-source-dirs:
       app/GetURL
@@ -45,6 +54,11 @@ executable GetURL-exe
   build-depends:
       Chapter08
     , base >=4.7 && <5
+    , bytestring
+    , http-conduit
+    , lens
+    , time
+    , wreq
   default-language: Haskell2010
 
 test-suite Chapter08-test
@@ -58,4 +72,9 @@ test-suite Chapter08-test
   build-depends:
       Chapter08
     , base >=4.7 && <5
+    , bytestring
+    , http-conduit
+    , lens
+    , time
+    , wreq
   default-language: Haskell2010
