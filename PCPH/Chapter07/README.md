@@ -1,8 +1,6 @@
-# Threads
+# Chapter 7. Basic Concurrency: Threads and MVars
+This is my playground while reading [Parallel and Concurrent Programming in Haskell][1] chapter 7.
 
-This is my playground while reading [Parallel and Concurrent Programming in Haskell][1].
-
-## Chapter 7
 | Example | Description |
 | --- | --- |
 | Fork | Try out the [`forkIO`][2] API to create threads. |

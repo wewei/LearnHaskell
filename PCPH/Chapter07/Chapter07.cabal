@@ -4,11 +4,11 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 
-name:           Threads
+name:           Chapter07
 version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/githubuser/Threads#readme>
-homepage:       https://github.com/githubuser/Threads#readme
-bug-reports:    https://github.com/githubuser/Threads/issues
+description:    Please see the README on GitHub at <https://github.com/githubuser/Chapter07#readme>
+homepage:       https://github.com/githubuser/Chapter07#readme
+bug-reports:    https://github.com/githubuser/Chapter07/issues
 author:         Author name here
 maintainer:     example@example.com
 copyright:      2022 Author name here
@@ -21,13 +21,13 @@ extra-source-files:
 
 source-repository head
   type: git
-  location: https://github.com/githubuser/Threads
+  location: https://github.com/githubuser/Chapter07
 
 library
   exposed-modules:
       Lib
   other-modules:
-      Paths_Threads
+      Paths_Chapter07
   hs-source-dirs:
       src
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
@@ -40,12 +40,12 @@ executable Chan-exe
   main-is: Main.hs
   other-modules:
       Chan
-      Paths_Threads
+      Paths_Chapter07
   hs-source-dirs:
       app/Chan
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      Threads
+      Chapter07
     , base >=4.7 && <5
     , containers
   default-language: Haskell2010
@@ -53,12 +53,12 @@ executable Chan-exe
 executable Fork-exe
   main-is: Main.hs
   other-modules:
-      Paths_Threads
+      Paths_Chapter07
   hs-source-dirs:
       app/Fork
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      Threads
+      Chapter07
     , base >=4.7 && <5
     , containers
   default-language: Haskell2010
@@ -67,12 +67,12 @@ executable Logger-exe
   main-is: Main.hs
   other-modules:
       Logger
-      Paths_Threads
+      Paths_Chapter07
   hs-source-dirs:
       app/Logger
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      Threads
+      Chapter07
     , base >=4.7 && <5
     , containers
   default-language: Haskell2010
@@ -80,12 +80,12 @@ executable Logger-exe
 executable MVar1-exe
   main-is: Main.hs
   other-modules:
-      Paths_Threads
+      Paths_Chapter07
   hs-source-dirs:
       app/MVar1
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      Threads
+      Chapter07
     , base >=4.7 && <5
     , containers
   default-language: Haskell2010
@@ -93,12 +93,12 @@ executable MVar1-exe
 executable MVar2-exe
   main-is: Main.hs
   other-modules:
-      Paths_Threads
+      Paths_Chapter07
   hs-source-dirs:
       app/MVar2
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      Threads
+      Chapter07
     , base >=4.7 && <5
     , containers
   default-language: Haskell2010
@@ -106,12 +106,12 @@ executable MVar2-exe
 executable MVar3-exe
   main-is: Main.hs
   other-modules:
-      Paths_Threads
+      Paths_Chapter07
   hs-source-dirs:
       app/MVar3
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      Threads
+      Chapter07
     , base >=4.7 && <5
     , containers
   default-language: Haskell2010
@@ -120,12 +120,12 @@ executable PhoneBook-exe
   main-is: Main.hs
   other-modules:
       PhoneBook
-      Paths_Threads
+      Paths_Chapter07
   hs-source-dirs:
       app/PhoneBook
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      Threads
+      Chapter07
     , base >=4.7 && <5
     , containers
   default-language: Haskell2010
@@ -133,26 +133,26 @@ executable PhoneBook-exe
 executable Reminders-exe
   main-is: Main.hs
   other-modules:
-      Paths_Threads
+      Paths_Chapter07
   hs-source-dirs:
       app/Reminders
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      Threads
+      Chapter07
     , base >=4.7 && <5
     , containers
   default-language: Haskell2010
 
-test-suite Threads-test
+test-suite Chapter07-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
-      Paths_Threads
+      Paths_Chapter07
   hs-source-dirs:
       test
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      Threads
+      Chapter07
     , base >=4.7 && <5
     , containers
   default-language: Haskell2010
