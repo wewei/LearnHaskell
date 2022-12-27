@@ -1,7 +1,7 @@
 module Main (main) where
 
-import Data.Maybe
-import System.Environment
+import Data.Maybe ( listToMaybe )
+import System.Environment ( getArgs )
 import qualified Cmdlet.Cancellable as Cancellable
 
 main :: IO ()
