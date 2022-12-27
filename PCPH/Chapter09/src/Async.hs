@@ -3,8 +3,8 @@ module Async
     , async
     , waitCatch
     , wait
-    -- , waitEither
-    -- , waitAny
+    , waitEither
+    , waitAny
     , cancel ) where
 
 import Control.Exception
@@ -22,7 +22,7 @@ import Control.Concurrent
     , forkIO
     , throwTo )
 
-data Async a = Async ThreadId (MVar (Either SomeException a))
+data Async a = Async [ThreadId] (MVar (Either SomeException a))
 
 async :: IO a -> IO (Async a)
 async action = do
@@ -30,7 +30,7 @@ async action = do
     tid <- forkIO $ do
         r <- try action
         putMVar var r
-    return (Async tid var)
+    return (Async [tid] var)
 
 waitCatch :: Async a -> IO (Either SomeException a)
 waitCatch (Async _ var) = readMVar var
@@ -42,19 +42,19 @@ wait a = do
         Left e  -> throwIO e
         Right v -> return v
 
--- waitEither :: Async a -> Async b -> IO (Either a b)
--- waitEither a b = do
---     m <- newEmptyMVar
---     _ <- forkIO $ do r <- try (fmap Left  (wait a)); putMVar m r
---     _ <- forkIO $ do r <- try (fmap Right (wait b)); putMVar m r
---     wait (Async m)
+waitEither :: Async a -> Async b -> IO (Either a b)
+waitEither a b = do
+    m    <- newEmptyMVar
+    tid1 <- forkIO $ do r <- try (fmap Left  (wait a)); putMVar m r
+    tid2 <- forkIO $ do r <- try (fmap Right (wait b)); putMVar m r
+    wait (Async [tid1, tid2] m)
 
--- waitAny :: [Async a] -> IO a
--- waitAny as = do
---     m <- newEmptyMVar
---     let forkwait a = forkIO $ do r <- try (wait a); putMVar m r
---     mapM_ forkwait as
---     wait (Async m)
+waitAny :: [Async a] -> IO a
+waitAny as = do
+    m <- newEmptyMVar
+    let forkwait a = forkIO $ do r <- try (wait a); putMVar m r
+    tids <- mapM forkwait as
+    wait (Async tids m)
 
 cancel :: Async a -> IO ()
-cancel (Async tid _) = throwTo tid ThreadKilled
+cancel (Async tids _) = mapM_ (`throwTo` ThreadKilled) tids
