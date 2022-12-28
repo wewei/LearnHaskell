@@ -30,6 +30,7 @@ library
       Mask
       TimeDownload
       TimeIt
+      Timeout
   other-modules:
       Paths_Chapter09
   hs-source-dirs:
@@ -47,6 +48,7 @@ executable Chapter09-exe
   main-is: Main.hs
   other-modules:
       Cmdlet.Cancellable
+      Cmdlet.Timeout
       Data
       Paths_Chapter09
   hs-source-dirs:
