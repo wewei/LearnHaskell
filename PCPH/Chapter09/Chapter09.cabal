@@ -27,6 +27,7 @@ library
   exposed-modules:
       Async
       GetURL
+      Mask
       TimeDownload
       TimeIt
   other-modules:

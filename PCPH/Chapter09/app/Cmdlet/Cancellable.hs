@@ -18,10 +18,13 @@ run = do
         hSetBuffering stdin NoBuffering
         forever $ do
             c <- getChar
-            when (c == 'q')  $ mapM_ cancel as
+            when (c == 'q')  $ do
+                putStrLn "Cancelling ..."
+                mapM_ cancel as
 
     r <- (try $ waitAny as :: IO (Either SomeException ()))
     when (isRight r) $ putStrLn "First page downloaded"
 
     rs <- mapM waitCatch as
+    putStrLn "Download finished."
     printf "%d/%d succeeded\n" (length (rights rs)) (length rs)
